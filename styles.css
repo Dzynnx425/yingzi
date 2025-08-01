@@ -1,0 +1,272 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url('04.png') no-repeat center center;
+    background-size: cover;
+    background-position: center 40%; /* 纵向偏移，40%可调整，确保人物在中心 */
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow: hidden;
+    animation: breathe 12s ease-in-out infinite alternate;
+}
+
+
+@keyframes breathe {
+    0% { background-size: 100% 100%; }
+    100% { background-size: 105% 105%; }
+}
+
+/* ========== 通用标题样式（PC默认） ========== */
+.content {
+    text-align: center;
+    padding-top: 50vh;
+    font-weight: 500; /* 字重稍微降低 */
+}
+
+/* 主标题 */
+.content h1 {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.7); /* 半透明白色 */
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.5); /* 柔和光晕 */
+    margin-bottom: 10px;
+}
+
+/* 副标题 */
+.content p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6); /* 更淡一些 */
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+/* ================= 背景闪烁小星点 ================= */
+.real-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.real-star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: twinkleReal linear infinite;
+    box-shadow: 0 0 10px rgba(255,255,200,1);
+}
+
+/* ⭐ 背景闪烁星点闪烁动画 */
+@keyframes twinkleReal {
+    0%,100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* ================= 漂浮大星星 ================= */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: floatUp linear forwards, twinkle infinite;
+    text-align: center;
+}
+
+/* ⭐ 星星里面的“影”字样式 */
+.star-text {
+    position: absolute;
+    font-family: "Comic Sans MS", "Microsoft YaHei", sans-serif;  /* ← 可换可爱字体 */
+    color: #ADD8E6;  /* 柔和浅色 */
+    font-weight: bold;
+    font-size: 0.3em; /* ← “影”字相对星星大小比例，可改0.3~0.5 */
+    text-shadow:
+        0 0 3px #ffffff,
+        0 0 8px #dde2ff,
+        0 0 12px #cfccff;
+    pointer-events: none;
+}
+
+/* 漂浮动画 */
+@keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.4) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(50vh) scale(1.2) rotate(180deg); opacity: 0.9; }
+    100% { transform: translateY(-10vh) scale(0.9) rotate(360deg); opacity: 0; }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* ================= 流星特效 ================= */
+.meteor {
+    position: fixed;
+    width: 100px;  /* ← 流星尾巴长度，可调 */
+    height: 10px;   /* ← 流星尾巴粗细 */
+    background: linear-gradient(90deg, rgba(255,255,200,1), rgba(255,255,255,0));
+    opacity: 0.9;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+    animation: meteorMove linear forwards;
+    display: flex;
+    align-items: center;
+}
+
+.meteor-text {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-family: "Comic Sans MS", "Microsoft YaHei", sans-serif; /* 可爱字体 */
+    color: #fff6f9;
+    font-weight: bold;
+    font-size: 20px;  /* ← 流星上的“影”字大小 */
+    text-shadow:
+        0 0 5px #fff,
+        0 0 8px #ffddee,
+        0 0 15px #ffccff;
+    white-space: nowrap;
+}
+
+/* 流星飞行动画 */
+@keyframes meteorMove {
+    0% {
+        transform: translate(0, 0) rotate(-20deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(800px, 400px) rotate(-20deg);
+        opacity: 0;
+    }
+}
+
+
+
+
+/* ====== 流星特效 ====== */
+.meteor {
+    position: fixed;
+    height: 10px;
+    background: linear-gradient(90deg, rgba(255,255,200,1), rgba(255,255,255,0));
+    opacity: 0.9;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+    animation: meteorMove linear forwards;
+    display: flex;
+    align-items: center;
+}
+
+.meteor-text {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-family: "Comic Sans MS", "Microsoft YaHei", sans-serif;
+    color: #fff6f9;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 8px #ffddee,
+        0 0 15px #ffccff;
+    white-space: nowrap;
+}
+
+@keyframes meteorMove {
+    0% { transform: translate(0, 0) rotate(-20deg); opacity: 1; }
+    100% { transform: translate(800px, 400px) rotate(-20deg); opacity: 0; }
+}
+
+
+/* 图标样式 */
+.btn-icon {
+    width: 30px;   /* 可调 */
+    height: 30px;
+    margin-top: 1px; /* 让图标和文字对齐 */
+    pointer-events: none;
+}
+
+
+
+
+
+/* 按钮容器（底部居中，两个按钮横排） */
+.button-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;   /* 横向排列 */
+    flex-wrap: nowrap;     /* 不允许换行 */
+    gap: 12px;             /* 按钮间距 */
+    z-index: 5;
+}
+
+
+/* 两个按钮统一样式 */
+.button-container button {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 220, 255, 0.6);
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff5fa;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 200, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+    text-shadow: 0 0 6px rgba(255,255,255,0.8);
+}
+
+.button-container button:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+}
+
+
+@media (max-width: 600px) {
+    .button-container {
+        gap: 8px;  /* 按钮间距缩小 */
+    }
+
+    .button-container button {
+        font-size: 12px;      /* 字体缩小 */
+        padding: 6px 12px;    /* 缩小按钮 */
+        min-width: 120px;     /* 固定最小宽度，避免折行 */
+        max-width: 45vw;      /* 最大宽度占屏幕45% */
+        white-space: nowrap;  /* 单行显示 */
+    }
+
+    .btn-icon {
+        width: 14px;
+        height: 14px;
+    }
+}
+
